@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import useInterval from './useInterval';
+import Matrix from './Matrix/Matrix';
+import Button from './Button/Button';
+import nextGen from './nextGen/nextGen';
 import './App.css';
 
+
+const initialState = Array(50).fill(false).map(item => {
+  return Array(50).fill(item)
+});
+
 function App() {
+  const [matrix, setMatrix] = useState(initialState);
+  const [delay, setDelay] = useState(null);
+  useInterval(() => setMatrix(nextGen(matrix)), delay)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Matrix matrix={matrix} setMatrix={setMatrix} />
+      <Button onClick={() => {
+        delay ? setDelay(null) : setDelay(250)
+      }}>{delay ? 'Stop' : 'Start'}</Button>
+    </>
   );
 }
 

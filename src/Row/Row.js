@@ -1,11 +1,11 @@
 import React from 'react';
-import Square from '../Square/Square'
+import Cell from '../Cell/Cell'
 
-function Row({ rowState, rowKey, setMatrix, matrix }) {
+function Row({ rowList, rowKey, setMatrix, matrix }) {
   
-  const row = rowState.map(
+  const row = rowList.map(
     (value, index) => (
-      <Square 
+      <Cell 
         isAlive={value} 
         key={index} 
         x={index} 

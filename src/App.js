@@ -19,7 +19,7 @@ function App() {
     <>
       <Matrix matrix={matrix} setMatrix={setMatrix} />
       <Button onClick={() => {
-        delay ? setDelay(null) : setDelay(250)
+        delay ? setDelay(null) : setDelay(100)
       }}>{delay ? 'Stop' : 'Start'}</Button>
     </>
   );

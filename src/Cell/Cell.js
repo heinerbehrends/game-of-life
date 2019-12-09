@@ -9,7 +9,7 @@ const StyledSquare = styled.div`
   background-color: ${ props => props.isAlive ? "black" : "white" };
 `;
 
-function Square({ isAlive, x, y, setMatrix, matrix }) {
+function Cell({ isAlive, x, y, setMatrix, matrix }) {
   const handleClick = e => {
     const x = e.target.getAttribute('x');
     const y = e.target.getAttribute('y');
@@ -41,4 +41,4 @@ function Square({ isAlive, x, y, setMatrix, matrix }) {
   )
 }
 
-export default Square;
+export default Cell;
